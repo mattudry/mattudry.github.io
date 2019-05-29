@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+
+* {
+  margin: 0;    /*removes margins around every element*/
+  box-sizing: border-box;
+}
+
+article {
+	border: 3px solid cyan;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.postHeader {
+	border: 3px solid tomato;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+article p {
+	font-family: "Noto Serif", serif;
+}

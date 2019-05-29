@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:500&display=swap');
+
+* {
+  margin: 0;    /*removes margins around every element*/
+  box-sizing: border-box;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+
+.header {
+	/*border: 2px solid cyan;*/
+	position: relative;
+
+	/* responsive properties */
+	width: 100%;
+	height: 100vh;
+}
+
+
+/* --- header properties for mobile --- */
+#mobileWrapper {
+	/*border: 2px solid tomato;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	padding: 10px;
+	width: 100%;
+	max-width: 600px;
+
+}
+
+#mobileHeader {
+	/*border: 1px solid blue;*/
+	width: 100%;
+  font-family: "Noto Sans TC", sans-serif; 
+}
+
+#mobileEN {
+	/*border: 2px solid lime;*/
+  
+  margin-top: 10px;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 3vh;
+  letter-spacing: -0.1em
+}
+
+#mobileEN ul {
+	list-style: none;
+	padding-left: 0;
+	letter-spacing: -0.05em;
+}
+
+#mobileEN li {
+	display: inline;
+	font-size: 0.9em;
+	padding: 0.4em;
+}
+
+
+
+/* --- header properties for desktop --- */
+#wideWrapper {
+	display: none;
+
+	/*border: 2px solid purple;*/
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+
+}
+
+#wideHeader {
+	width: 100%;
+
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#wideTW {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+#wideEN {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.wideUL {
+  font-size: 4px;
+  letter-spacing: -0.1px;
+}
+
+
+
+/* --- content menu --- */
+.content {
+	/*border: 2px solid lightblue;*/
+
+	/* responsive properties */
+	width: 100%;
+}
+
+.post {
+	/*border: 1px solid gray;*/
+	text-align: right;
+	font-family: Helvetica, Arial, sans-serif;
+	margin: 10px 20px 20px 10px;
+	display: inline-block;
+	float: right;
+	clear: right;
+}
+
+.postTitle {
+	font-size: 36px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
+
+.postSubtitle {
+	font-size: 22px;
+}
+
+.postDate {
+	font-size: 18px;
+}
+
+
+
+/* Enable these values on desktop-sized screens */
+@media only screen and (min-width: 900px) {
+	.header {
+		width: 50%; 
+		position: fixed;
+	}
+	
+	.content {
+		width: 50%; 
+		float: right;
+	}
+
+	#mobileWrapper {
+		display: none;
+	}
+
+	#wideWrapper {
+		display: block;
+	}
+}
