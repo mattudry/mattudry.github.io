@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:500&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
 
 * {
   margin: 0;    /*removes margins around every element*/
@@ -7,16 +7,101 @@
 }
 
 article {
-	border: 3px solid cyan;
-	margin: 0 auto;
-	max-width: 800px;
+	/*border: 3px solid cyan;*/
+	margin: 0px auto;
+	margin-bottom: 50px;
+	max-width: 750px;
+	padding: 10px;
 }
 
 .postHeader {
-	border: 3px solid tomato;
+	/*border: 3px solid tomato;*/
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  letter-spacing: -0.07em;
+}
+
+.subheader {
+	margin: 5px 0px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	letter-spacing: -0.05em;
+}
+
+figure {
+	/*border: 2px solid lime;*/
+	display: inline-block;
+	padding: 0px;
+	margin: 20px auto;
+}
+
+/* figure class that shrinks portrait images*/
+.portraitImg {
+	width: 75%;
+}
+
+figure img {
+	width: 100%;
+	height: auto;
+}
+
+figcaption {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	text-align: right;
+	letter-spacing: -0.03em;
+	color: #555;
+}
+
+article {
+	font-family: "Crimson Text", serif;
+	font-size: 20px;
 }
 
 article p {
-	font-family: "Noto Serif", serif;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	text-indent: 2em;
+}
+
+
+article li {
+	text-indent: 0em;
+	margin: 10px 0px;
+}
+
+footer {
+	background-color: black;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+footer > div {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	letter-spacing: -0.05em;	
+
+	color: white;
+	padding: 1em;
+}
+
+div a {
+	color: white;
+	text-decoration: none;
+}
+
+div a:hover {
+	text-decoration: underline;
+}
+
+.prev {
+	text-align: left;
+}
+
+.home {
+	text-align: center;
+}
+
+.next {
+	text-align: right;
 }
