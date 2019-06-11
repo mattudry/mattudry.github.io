@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
 
 * {
@@ -10,15 +10,26 @@ article {
 	/*border: 3px solid cyan;*/
 	margin: 0px auto;
 	margin-bottom: 50px;
-	max-width: 750px;
+	max-width: 850px;
 	padding: 10px;
+	font-family: "Crimson Text", serif;
+	font-size: 20px;
 }
+
 
 .postHeader {
 	/*border: 3px solid tomato;*/
+	margin: 0px auto;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: -0.07em;
+  max-width: 900px;
+  padding: 10px;
+}
+
+.headerFig {
+	/*border: 2px solid magenta;*/
+	width: 100%;
 }
 
 .subheader {
@@ -30,14 +41,15 @@ article {
 
 figure {
 	/*border: 2px solid lime;*/
-	display: inline-block;
 	padding: 0px;
 	margin: 20px auto;
+	width: 98%;
 }
 
 /* figure class that shrinks portrait images*/
-.portraitImg {
-	width: 75%;
+.portraitFig {
+	width: 98%;
+	max-width: 500px;
 }
 
 figure img {
@@ -53,12 +65,9 @@ figcaption {
 	color: #555;
 }
 
-article {
-	font-family: "Crimson Text", serif;
-	font-size: 20px;
-}
-
 article p {
+	max-width: 700px;
+	margin: 10px auto;
 	margin-top: 5px;
 	margin-bottom: 10px;
 	text-indent: 2em;
@@ -104,4 +113,14 @@ div a:hover {
 
 .next {
 	text-align: right;
+}
+
+.divider {
+	margin: 50px auto;
+	font-size: 24px;
+	text-align: center;
+}
+
+.chinese {
+	font-family: "Noto Sans TC", sans-serif;
 }
