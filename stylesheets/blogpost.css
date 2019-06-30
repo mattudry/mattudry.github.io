@@ -33,10 +33,13 @@ article {
 }
 
 .subheader {
-	margin: 5px 0px;
+	/*border: 3px solid tomato;*/
+	max-width: 700px;
+	margin: 10px auto;
+	margin-top: 40px;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 24px;
-	letter-spacing: -0.05em;
+	letter-spacing: -0.03em;
 }
 
 figure {
