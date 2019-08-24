@@ -6,6 +6,49 @@
   box-sizing: border-box;
 }
 
+
+
+nav ul {
+	/*border: 3px solid black;*/
+	background-color: rgba(255,255,255,0.8);
+	border-top: 2px solid black;
+	position: fixed;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 20px 5px 20px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav li {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;	
+
+  font-size: 18px;
+  font-family: fira-sans-2, sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+nav li a {
+	text-decoration: none;
+	color: black;
+}
+
+nav li a:hover {
+	text-decoration: underline;
+}
+
 article {
 	/*border: 3px solid cyan;*/
 	margin: 0px auto;
@@ -19,17 +62,28 @@ article {
 
 .postHeader {
 	/*border: 3px solid tomato;*/
-	margin: 0px auto;
-  font-family: Helvetica, Arial, sans-serif;
+	margin: 0px auto 0px;
+  font-family: fira-sans-2, sans-serif;
   font-size: 20px;
-  letter-spacing: -0.07em;
+
   max-width: 900px;
   padding: 10px;
+}
+
+.postHeader h1 {
+	font-weight: 700;
+	margin-bottom: -5px;
+}
+
+.postHeader h3 {
+	font-weight: 500;
+	font-style: italic;
 }
 
 .headerFig {
 	/*border: 2px solid magenta;*/
 	width: 100%;
+	margin: 20px auto;
 }
 
 .subheader {
@@ -37,15 +91,15 @@ article {
 	max-width: 700px;
 	margin: 10px auto;
 	margin-top: 40px;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: fira-sans-2, sans-serif;
 	font-size: 24px;
-	letter-spacing: -0.03em;
 }
 
 figure {
-	/*border: 2px solid lime;*/
-	padding: 0px;
-	margin: 20px auto;
+	border: 3px solid black;
+	box-shadow: 7px 7px 0px 0px rgb(100,100,100);
+	padding: 10px;
+	margin: 50px auto;
 	width: 98%;
 }
 
@@ -58,13 +112,14 @@ figure {
 figure img {
 	width: 100%;
 	height: auto;
+	border: 2px solid black;
 }
 
 figcaption {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: fira-sans-2, sans-serif;
 	font-size: 18px;
+	font-weight: 600;
 	text-align: right;
-	letter-spacing: -0.03em;
 	color: #555;
 }
 

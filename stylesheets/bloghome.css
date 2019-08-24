@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:500&display=swap');  
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400&display=swap'); 
 
 * {
   margin: 0;    /*removes margins around every element*/
@@ -10,21 +10,27 @@ a {
 	text-decoration: none;
 }
 
+body {
+	background-color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 .header {
 	/*border: 2px solid cyan;*/
 	position: relative;
+	z-index: -10;
 
 	/* responsive properties */
 	width: 100%;
 	height: 100vh;
 }
 
-
-/* --- header properties for mobile --- */
-#mobileWrapper {
+#headerGraphic {
 	/*border: 2px solid tomato;*/
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -34,125 +40,150 @@ a {
 	max-width: 600px;
 }
 
-#mobileHeader {
+#graphicSVG {
 	/*border: 1px solid blue;*/
 	width: 100%;
   font-family: "Noto Sans TC", sans-serif; 
 }
 
-#mobileEN {
-	/*border: 2px solid lime;*/
-  
-  margin-top: 10px;
-  text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 3vh;
-  letter-spacing: -0.1em
+#graphicText {
+	text-shadow: 5px 5px 0px rgb(100,100,100);
 }
 
-#mobileEN ul {
-	list-style: none;
-	padding-left: 0;
-	letter-spacing: -0.05em;
-}
-
-#mobileEN li {
-	display: inline;
-	font-size: 0.9em;
-	padding: 0.4em;
-}
-
-
-
-/* --- header properties for desktop --- */
-#wideWrapper {
-	display: none;
-	/*border: 2px solid purple;*/
+/* --- nav bar --- */
+nav ul {
+	/*border: 3px solid black;*/
+	background-color: rgba(255,255,255,0.8);
+	border-bottom: 3px solid white;
 	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 50%;
-
-}
-
-#wideHeader {
+	z-index: 10;
 	width: 100%;
-  font-family: Helvetica, Arial, sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-#wideTW {
-  font-family: "Noto Sans TC", sans-serif;
-}
+nav li {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 6px 4px;
+  text-decoration: none;	
 
-#wideEN {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 10px;
+  font-size: 16px;
+  font-family: fira-sans-2, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.5px;
 }
 
-.wideUL {
-  font-size: 4px;
-  letter-spacing: -0.1px;
+nav li a {
+	font-style: italic;
+	font-weight: 500;
+}
+
+nav li a:hover {
+	text-decoration: underline;
 }
 
 
 
 /* --- content menu --- */
 .content {
-	/*border: 2px solid lightblue;*/
-
-	/* responsive properties */
+	/*border: 2px solid cyan;*/
 	width: 100%;
+	padding-top: 100px;
+	padding: 100px 20px 0px 20px;
 }
 
 .post {
-	/*border: 1px solid gray;*/
-	text-align: right;
-	font-family: Helvetica, Arial, sans-serif;
-	margin: 10px 20px 20px 10px;
-	display: inline-block;
-	float: right;
-	clear: right;
+	border: 2px solid black;
+	margin: 50px auto;
+	padding: 15px;
+	max-width: 600px;
+	box-shadow: 7px 7px 0px 0px rgb(100,100,100);
+	background-color: white;
+	transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.post:hover {
+	box-shadow: 7px 7px 8px 3px rgba(100,100,100, 0.3);
+	transform: translate(-2px, -2px);
+}
+
+.postImg {
+	width: 100%;
+	border: 2px solid black;
 }
 
 .postTitle {
-	font-size: 36px;
-	font-weight: 700;
-	letter-spacing: -0.04em;
-}
-
-.postTitle:hover {
-	text-decoration: underline;
-}
-
-.postSubtitle {
-	font-size: 22px;
+	text-align: right;
+	font-family: fira-sans-2, sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: -5px;
 }
 
 .postDate {
+	text-align: right;
+	font-family: fira-sans-2, sans-serif;
 	font-size: 18px;
+	font-weight: 500;
+	font-style: italic;
 }
 
+#lineBreak {
+	border: 1px solid rgb(100,100,100);
+	width: 25%;
+	margin: 200px auto;
+}
 
+#aboutMe {
+	margin: 0px auto;
+	border: 2px solid black;
+	padding: 15px;
+	box-shadow: 7px 7px 0px 0px rgb(100,100,100);
+	max-width: 1000px;
+	overflow: auto;
+}
 
-/* Enable these values on desktop-sized screens */
-@media only screen and (min-width: 900px) {
-	.header {
-		width: 50%; 
-		position: fixed;
-	}
-	
-	.content {
-		width: 50%; 
-		float: right;
-	}
+#aboutImg {
+	display: none;
+	width: 30%;
+	float: left;
+	margin-right: 2em;
+}
 
-	#mobileWrapper {
-		display: none;
-	}
+#aboutInfo {
+	/*margin-left: 30%;*/
+	/*border: 2px solid tomato;*/
+	font-family: fira-sans-2, sans-serif;
+}
 
-	#wideWrapper {
-		display: block;
-	}
+#aboutInfo p {
+	font-style: italic;
+	text-indent: 30px;
+	margin-bottom: 10px;
+}
+
+.chinese {
+	font-family: "Noto Sans TC", sans-serif;
+	font-weight: 300; 
+}
+
+#toTopButton {
+	font-family: fira-sans-2, sans-serif;
+	font-style: italic;
+	text-align: center;
+	margin: 150px auto 50px;
+}
+
+#toTopButton:hover {
+	text-decoration: underline
+}
+
+/* properties for screens wider than 600px*/
+@media screen and (min-width: 600px) {
+	#aboutImg {display: block;}
+	nav li {font-size: 20px; padding: 8px 8px;}
 }

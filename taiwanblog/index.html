@@ -6,113 +6,149 @@
 <link rel="icon" href="taiwanflag.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Matt's Blog</title>
-</head>
+<link rel="stylesheet" href="https://use.typekit.net/ypc4akk.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"
+  integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery.shadow-animation/1/mainfile"></script>
+<script>
+	$(window).scroll(function() {
+		var scrollTop = $(window).scrollTop();
+		var height = $(window).height();
 
+		$("#graphicSVG, .slogan").css({
+			"opacity": ((height - scrollTop) / height)
+		});
+	});
+</script>
+</head>
 <body>
 
+<div id = "pageTop"></div>
+
+<nav>
+	<ul> 
+		<li>Matt in Taiwan</li>
+		<li><a href="#aboutMe">About</a></li>
+		<li><a href="mailto:matt.udry@yale.edu">Contact</a></li>
+		<li><a href="/">Site Home</a></li>
+	</ul>
+</nav>
+
+
 <div class = "header">
-		<div id = "mobileWrapper">
-			<svg id = "mobileHeader" viewBox="0 0 32 32">
-			  <defs>
-			    <linearGradient id="gradientTW1" gradientTransform="rotate(90)">
-			      <stop offset="5%"  stop-color="#00F260" />
-			      <stop offset="95%" stop-color="#0575E6" />
-			    </linearGradient>
-			  </defs>
-			  <text fill="url(#gradientTW1)">
-				  <tspan x="0" y="14">我在</tspan>
-				  <tspan x="0" y="30">台灣</tspan>
-				</text>
-			</svg>
-
-			<div id = "mobileEN">
-				<h1>Matt in Taiwan</h1>
-				<ul>
-					<li><a href="#about">About</a></li>
-					<li><a href="mailto:mattudry@gmail.com">Contact</a></li>
-					<li><a href="/">Site Home</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div id = "wideWrapper">
-		<svg id = "wideHeader" viewBox="0 0 80 66">
+	<div id = "headerGraphic">
+		<svg id = "graphicSVG" viewBox="0 0 32 32">
 		  <defs>
-		    <linearGradient id="gradientTW2" gradientTransform="rotate(90)">
+		    <linearGradient id="gradientTW1" gradientTransform="rotate(90)">
 		      <stop offset="5%"  stop-color="#00F260" />
 		      <stop offset="95%" stop-color="#0575E6" />
 		    </linearGradient>
-		  </defs>			
-		  <text id="wideTW" fill="url(#gradientTW2)" writing-mode="tb-rl" letter-spacing="-7" x="8" y="0">我在台灣</text>
-		  <a href="#about">
-		  	<text class="wideUL" x="17" y="48">About</text> </a>
-		  <a href="mailto:mattudry@gmail.com" target="_top">	
-			  <text class="wideUL" x="17" y="52">Contact</text> </a>
-		  <a href="/">
-			  <text class="wideUL" x="17" y="56">Site Home</text> </a>
-		  <text id="wideEN" x="16.7" y="65">Matt in Taiwan</text>
+
+		  </defs>
+		  <text id = "graphicText" fill="url(#gradientTW1)">
+			  <tspan x="0" y="14">我在</tspan>
+			  <tspan x="0" y="30">台灣</tspan>
+			</text>
 		</svg>
+
 	</div>
 </div>
 
+
+
 <div class = "content">
+
+
 	<div class = "post">
 		<a href = "./posts/5-31-19.html">
+		<img class = "postImg" src = "./blogImages/ticketCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Day 0</div>
-			<div class = "postSubtitle">I'm not quite sure what I'm doing</div>
 			<div class = "postDate">5.31.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/6-11-19.html">
+		<img class = "postImg" src = "./blogImages/bridgesCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Building Bridges</div>
-			<div class = "postSubtitle">Reflections on my first day</div>
 			<div class = "postDate">6.11.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/6-24-19.html">
-			<div class = "postTitle">Some Fun Adventures!</div>
-			<div class = "postSubtitle">Embracing the unknown</div>
+		<img class = "postImg" src = "./blogImages/shilinCover.jpg">
+		<div class = "postInfo">
+			<div class = "postTitle">Embracing the Unknown</div>
 			<div class = "postDate">6.24.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/6-30-19.html">
+		<img class = "postImg" src = "./blogImages/wisteriaCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">j chillin' (for now)</div>
-			<div class = "postSubtitle">Some more highlights</div>
 			<div class = "postDate">6.30.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/7-7-19.html">
+		<img class = "postImg" src = "./blogImages/windowCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Learning Chinese is Hard</div>
-			<div class = "postSubtitle">And other very profound insights</div>
 			<div class = "postDate">7.7.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/7-15-19.html">
+		<img class = "postImg" src = "./blogImages/revolverCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Week 6</div>
-			<div class = "postSubtitle">Almost halfway there!</div>
 			<div class = "postDate">7.15.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/7-30-19.html">
+		<img class = "postImg" src = "./blogImages/taxiCover.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Bobes, Bops, and Bones (oh my!)</div>
-			<div class = "postSubtitle">More good times</div>
 			<div class = "postDate">7.30.19</div>
+		</div>
 		</a>
 	</div>
 	<div class = "post">
 		<a href = "./posts/8-10-19.html">
+		<img class = "postImg" src = "./blogImages/thailandCoverComp.jpg">
+		<div class = "postInfo">
 			<div class = "postTitle">Matt in Thailand</div>
-			<div class = "postSubtitle">A fun little weekend trip</div>
 			<div class = "postDate">8.10.19</div>
+		</div>
 		</a>
-	</div>		
+	</div>
+
+	<div id = "lineBreak"></div>
+
+	<div id = "aboutMe">
+		<img id = "aboutImg" src = "./blogImages/taipeiPortrait.jpg">
+		<div id = "aboutInfo">
+			<h1>About</h1>
+			<p>Hello and welcome to my blog! I’m Matt <span class = "chinese">(郁志揚)</span>, a rising sophomore in Davenport College and prospective Computer Science and Music major. This summer I’ll be studying Chinese at the International Chinese Language Program in Taipei, Taiwan. As required by the Richard U. Light Fellowship, which has generously funded my summer abroad, I will be maintaining a blog over the course of my time in Taiwan. Some things this blog might include (but is not limited to): random adventures, cool photos, culture shock, unfinished thoughts, mishaps, identity-crises, ramblings, and a healthy dose of food pics. Nice!</p>
+			<p>If you have any questions or comments, or are considering studying at ICLP, please feel free to reach me at the email in the ‘Contact’ section of this page!</p>
+			<p>And lastly, one more huge thank-you to the Light Fellowship. Without their incredible support, none of this would be possible.</p>
+			<p>Thanks for visiting and I hope you enjoy the blog!</p>
+		</div>
+	</div>
+
+	<div id = "toTopButton"><a href = "#pageTop">Return to top</a></div>
 </div>
 </body>
 </html>
