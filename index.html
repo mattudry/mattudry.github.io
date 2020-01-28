@@ -1,17 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href = "./stylesheets/websitehome.css" type="text/css" rel = "stylesheet">
+	<link rel="icon" href="./images/teaicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.typekit.net/eqf6yul.css">
 	<title>Matt Udry</title>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+	<script>
+		function expandText(textID, linkID) {
+		  var moreText = document.getElementById(textID);
+		  var linkText = document.getElementById(linkID);
+
+		  if (moreText.style.display === "inline") {
+		    linkText.innerHTML = "Read more...";
+		    moreText.style.display = "none";
+				if (textID === "425text") {
+					document.getElementById("425img").style.display = "none";
+				}
+		  } else {
+		    linkText.innerHTML = "Collapse";
+		    moreText.style.display = "inline";
+				if (textID === "425text") {
+					document.getElementById("425img").style.display = "block";
+				}
+		  }
+		}
+	</script>
 </head>
+
 <body>
 
-<img src = "images/brownieConstruction.jpg" width = "300px">
-<h1>Oops! This page is under construction!</h1>
-<a href = "taiwanblog/"><h3>Return to blog</h3></a>
+	<div id = "pageHome">
+		<div id = "homeBigText"><p class = "colorbg">Hi, I'm Matt Udry.</p></div>
+		<span id="homeSmallText"></span>
+	</div>
 
+	<nav>
+		<ul>
+			<li><a href = "#pageHome">Home</a></li>
+			<li><a href="https://mattudry.com/taiwanblog/" target = "_blank">Taiwan '19</a></li>
+			<li><a href = "https://www.linkedin.com/in/matthew-udry-947429168/" target="_blank">LinkedIn</a></li>
+			<li><a href = "./resources/udry_resume_1.20.20.pdf" target = "_blank">Resume</a></li>
+			<li><a href = "#contactSection">Contact</a></li>
+		</ul>
+	</nav>
+
+	<svg>
+		<defs>
+			<linearGradient id="svgGrad" x1=0% y1=50% >
+				<stop offset=0% stop-color=#0b2d13 >
+					<animate id=a1 attributeName="stop-color" values="#0b2d13; #79c98c" begin="0; a2.end" dur="3s" />
+					<animate id=a2 attributeName="stop-color" values="#79c98c; #0b2d13" begin="a1.end" dur="3s" />
+				</stop>
+				<stop offset=100% stop-color=#79c98c >
+					<animate id=a3 attributeName="stop-color" values="#79c98c; #0b2d13" begin="0; a4.end" dur="3s" />
+					<animate id=a4 attributeName="stop-color" values="#0b2d13; #79c98c" begin="a3.end" dur="3s" />
+				</stop>
+			</linearGradient>
+		</defs>
+	</svg>
+
+	<div id = "portfolioTop"></div>
+
+	<div class = "headerBreak">
+		<h1>Works in Progress</h1>
+	</div>
+
+	<div class = "mainContent">
+		<div class = "textContent">
+			<h2>Laptop Jam</h2>
+			<p>A collaborative music making experience. The idea of this project was to let anybody participate in a kind of “jam session,” being able sit down and make music with friends (or strangers) without the barriers of skill and virtuosity that ordinary musical instruments create.</p>
+			<span class = "expandedText" id = "425text">
+				<p>Each musician is given a laptop and an interface with two parts. First, they are given a simple “primary” instrument – for example, a bass controlled by pressing keys on a keyboard or a marimba-like instrument controlled through a GUI sequencer. Instruments are designed with some restraints (e.g. some are restricted to certain notes in a scale) so that it’s harder to “make mistakes,” but they still give plenty of room for creative freedom. In theory, this allows the musicians to focus only on making musical decisions. The interfaces themselves are also minimal and instructions are intentionally vague, letting users freely explore and develop their own techniques. </p>
+				<p>At the same time, musicians have the ability to control the parameters of another user’s instrument. For example, moving the mouse to one end of the screen might change the timbre of another instrument or pan it across the stereo field. In addition to the extra attention that this second task demands, it also encourages individuals to engage with and respond to the musicians around them, rather than going off independently.</p>
+				<p>As the work progresses, different instruments phase in and out of the texture and the users find new musical ideas. The result is an ambient-like piece, (mostly) free of traditional musical structure but still easy (and pleasant) to listen to.</p>
+				<p>The idea started as my final project last fall for <i>MUSI 425 – Special Topics in Music, Multimedia Art, and Technology</i> and utilized Max/MSP, Ableton Live, and Max for Live all networked via OSC. The excerpt showcased here is from my in-class presentation, performed and completely improvised by three of my classmates who have never used (or heard) the work before.*</p>
+				<p>Hopefully, this year I can continue refining it and adding new instruments, interfaces, and features.</p>
+				<p><i>*I apologize for the suboptimal audio – it was recorded from a camera filming the presentation, so some room chatter is audible.</i></p>
+			</span>
+			<a onclick="expandText('425text', '425link')" class = "expandLink" id="425link">Read more...</a>
+		</div>
+		<div class = "imgContent">
+			<iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/750640081&color=%2393746e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+			<img src="./images/laptopjam.png" class="expandedImg" id="425img"/>
+		</div>
+	</div>
+
+	<div class = "mainContent">
+		<div class = "textContent">
+			<h2>Amorium Labs</h2>
+			<p>I’m currently working as a sound designer and programmer for Amorium Labs, Yale’s first and only game development club. Our current project, <i>Bulldog Bash</i>, an 8-bit Street Fighter-style fighting game featuring iconic places and people from around the Yale campus. Built with Unity.<p>
+		</div>
+		<div class = "imgContent">
+			<!-- img goes here -->
+		</div>
+	</div>
+
+	<div class = "mainContent">
+		<div class = "textContent">
+			<h2>Websites</h2>
+			<p>I also occasionally like to dabble in website design. Although I don’t (yet) consider myself a front-end guru or a practiced designer, I do value good design and really enjoy the process of imagining and implementing a positive “user experience.”</p>
+			<p>I’ve created a few different pages with plain HTML/CSS/Javascript, including this page (still a work in progress) and a <a href="https://mattudry.com/taiwanblog/" target="_blank">blog</a> from my time abroad in Taiwan, and created <a href="https://www.lowstrungcellos.org/" target = "_blank">lowstrungcellos.com</a> with the help of Squarespace.</p>
+		</div>
+		<div class = "imgContent">
+			<img src="./images/mattintaiwan.png" class="stdImg" />
+		</div>
+	</div>
+
+	<div class = "headerBreak">
+		<h1>Other Work</h1>
+	</div>
+
+	<div class = "mainContent">
+		<div class = "textContent">
+			<h2>Cross Campus</h2>
+			<p>Last spring, I served as a Producer and Lead Sound Engineer on the Yale Daily News’ first-ever podcast, <i><a href="https://yaledailynews.com/blog/2019/02/10/cross-campus-episode-6-inside-the-yale-admissions-machine/" target="_blank">Cross Campus</i></a>, where my work included planning episode content, recording interviews, and assembling and editing episode content, among other tasks. Because the team and I had little background in podcasting before <i>Cross Campus</i>, figuring out how to put together episodes was both daunting and exciting. In the process, I learned a lot about thoughtful sound design the importance of good pacing in storytelling, skills which I think carry over to many different areas of my work.</p>
+			<p>The project proved so successful that after only a single semester, the YDN received large donations to build a brand-new studio space just for podcast production.</p>
+		</div>
+		<div class = "imgContent">
+			<iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572915847&color=%2308396e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+		</div>
+	</div>
+
+	<br />
+
+	<div class = "mainContent">
+		<div class = "textContent">
+			<p><i>Note: This site is still under development with more projects coming soon! As the year goes on, I'll continue to add more content here from both classwork and personal endeavors.</i></p>
+		</div>
+	</div>
+
+	<div class = "headerBreak">
+		<h1>Contact</h1>
+	</div>
+
+	<div id = "contactSection">
+		<p>Email: <a href="mailto:matt.udry@yale.edu">matt.udry@yale.edu</a></p>
+		<p>Phone: 262.705.8577</p>
+	</div>
 
 </body>
 
+<script>
+	var typed = new Typed('#homeSmallText', {
+		strings: ["I am a sophomore at Yale University studying computer science and music.", "I'm interested in the creative applications of computing; ^500 in particular, ^250 how new technologies can be used to enrich or expand our experiences with music and sound.", "I hope that my future work — whether it's making new tools to be used for creative purposes ^500 or applying those tools to make something new — ^500 creates both interesting and ^250 (most importantly) ^150 meaningful experiences for all people.", "Thank you for stopping by my page! ^500 Feel free to take a look what I've been working on recently. If you have any questions, you can find my contact info below."],
+		startDelay: 2000,
+		typeSpeed: 15,
+		backDelay: 2500,
+		backSpeed: 10,
+		loop: true
+	});
+</script>
 
 </html>
