@@ -62,6 +62,7 @@ nav li a:hover {
 
 a:hover {
   cursor: pointer;
+  background: -webkit-linear-gradient(to right, #5c258d, #4389a2);
   background: linear-gradient(to right, #5c258d, #4389a2);
   background-size: 200% 200%;
   color: #000;
@@ -73,8 +74,6 @@ a:hover {
 }
 
 #pageHome {
-  background-size: 200% 200%;
-  animation: movingColors 4s ease infinite;
   z-index: 20;
   height: 92vh;
   width: 100%;
@@ -106,6 +105,7 @@ a:hover {
 }
 
 .colorbg {
+  background: -webkit-linear-gradient(to right, #5c258d, #4389a2);
   background: linear-gradient(to right, #5c258d, #4389a2);
   background-size: 200% 200%;
   color: #000;
