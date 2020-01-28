@@ -41,6 +41,10 @@ nav li {
 
 nav li a {
   text-decoration: none;
+}
+
+a {
+  text-decoration: underline;
   color: black;
 }
 
