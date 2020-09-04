@@ -1,156 +1,157 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<link href = "./stylesheets/websitehome.css" type="text/css" rel = "stylesheet">
-	<link rel="icon" href="./images/teaicon.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://use.typekit.net/eqf6yul.css">
-	<title>Matt Udry</title>
-	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-	<script>
-		function expandText(textID, linkID) {
-		  var moreText = document.getElementById(textID);
-		  var linkText = document.getElementById(linkID);
+<html lang="en" dir="ltr">
+  <head>
+    <link rel = "stylesheet" href = "./stylesheets/websitehome.css" type="text/css">
+    <link rel="icon" href="./images/teaicon.png">
+    <link rel="stylesheet" href="https://use.typekit.net/eqf6yul.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matt Udry</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var smallScreen = $(window).width() < 460;
+        var currElemNum = -1;
+        if (smallScreen) {
+          $('.listItem').each(function(index) {
+            $('#' + index).after($('#elem' + index));
+          });
+          $('#header').after($('nav'));
+        }
+        $("#mainContent li").click(function() {
+          if (!smallScreen) {   // desktop, use content swapping
+            var newElemNum = this.id;
+            var newContent = $('#elem'+newElemNum);
+            if (currElemNum == -1) {
+              $(newContent).fadeIn(300, "swing");
+              $('#'+newElemNum).css({"font-weight": "500"});
+              currElemNum = newElemNum;
+            } else if (currElemNum == newElemNum) {
+              $(newContent).fadeOut(300, "swing");
+              $('#'+currElemNum).css({"font-weight": "300"});
+              currElemNum = -1;
+            } else {
+              $('#'+currElemNum).css({"font-weight": "300"});
+              $('#elem'+currElemNum).fadeOut(300, "swing", function() {
+                $(newContent).fadeIn(300, "swing");
+                $('#'+newElemNum).css({"font-weight": "500"});
+              });
+              currElemNum = newElemNum;
+            }
+          } else {              // mobile, use sliding menus
+            var newElemNum = this.id;
+            var newContent = $('#elem'+newElemNum);
+            $(newContent).slideToggle("slow");
+            if (currElemNum == -1) {
+              currElemNum = newElemNum;
+            } else if (currElemNum == newElemNum) {
+              currElemNum = -1;
+            } else {
+              $('#elem'+currElemNum).slideToggle("slow");
+              currElemNum = newElemNum;
+            }
+          }
+        })
+      });
+    </script>
+  </head>
+  <body>
 
-		  if (moreText.style.display === "inline") {
-		    linkText.innerHTML = "Read more...";
-		    moreText.style.display = "none";
-				if (textID === "425text") {
-					document.getElementById("425img").style.display = "none";
-				}
-		  } else {
-		    linkText.innerHTML = "Collapse";
-		    moreText.style.display = "inline";
-				if (textID === "425text") {
-					document.getElementById("425img").style.display = "block";
-				}
-		  }
-		}
-	</script>
-</head>
+    <nav>
+      <ul>
+        <li><a href = "./resources/udry_resume_aug2020.pdf" target = "_blank">Resume</a></li>
+        <li><a href = "https://www.linkedin.com/in/matt-udry-947429168/" target="_blank">LinkedIn</a></li>
+        <li><a href = "https://soundcloud.com/mattudry" target="_blank">Music</a></li>
+        <li>matt.udry [at] yale.edu</li>
+      </ul>
+      <hr>
+    </nav>
 
-<body>
+    <div id="mainPage">
+      <div id="header">
+        <h1>Hi, I'm Matt Udry.</h1>
+        <br>
+        <p>I am a junior at Yale University studying computer science and music.
+          As a programmer, I am interested in working on creative tools that can enrich
+          our experiences of the world around us. As a musician, I am interested in
+          creating and performing works that explore new technologies and can meaningfully
+          push musical boundaries.</p>
+        <br>
+        <p>Thank you for visiting my page! A few of my recent projects and involvements can be found below.</p>
+      </div>
+      <hr>
+      <div id="mainContent">
+        <section id="info">
+          <ul>
+            <li class="listHeader">Work</li>
+            <li class="listItem" id="0">Research</li>
+            <li class="listHeader">Experiments</li>
+            <li class="listItem" id="1">Laptop Orchestra</li>
+            <li class="listItem" id="2">Live Coding</li>
+            <li class="listHeader">Other Stuff</li>
+            <li class="listItem" id="3">Amoriem Labs</li>
+            <li class="listItem" id="4">Cross Campus</li>
+            <li class="listItem" id="5">Taiwan 2019</li>
+          </ul>
+        </section>
 
-	<div id = "pageHome">
-		<div id = "homeBigText"><p class = "colorbg">Hi, I'm Matt Udry.</p></div>
-		<span id="homeSmallText"></span>
-	</div>
-
-	<nav>
-		<ul>
-			<li><a href = "#pageHome">Home</a></li>
-			<li><a href="https://mattudry.com/taiwanblog/" target = "_blank">Taiwan '19</a></li>
-			<li><a href = "https://www.linkedin.com/in/matthew-udry-947429168/" target="_blank">LinkedIn</a></li>
-			<li><a href = "./resources/udry_resume_jan2020.pdf" target = "_blank">Resume</a></li>
-			<li><a href = "#contactSection">Contact</a></li>
-		</ul>
-	</nav>
-
-	<svg>
-		<defs>
-			<linearGradient id="svgGrad" x1=0% y1=50% >
-				<stop offset=0% stop-color=#0b2d13 >
-					<animate id=a1 attributeName="stop-color" values="#5c258d; #4389a2" begin="0; a2.end" dur="5s" />
-					<animate id=a2 attributeName="stop-color" values="#4389a2; #5c258d" begin="a1.end" dur="5s" />
-				</stop>
-				<stop offset=100% stop-color=#79c98c >
-					<animate id=a3 attributeName="stop-color" values="#4389a2; #5c258d" begin="0; a4.end" dur="5s" />
-					<animate id=a4 attributeName="stop-color" values="#5c258d; #4389a2" begin="a3.end" dur="5s" />
-				</stop>
-			</linearGradient>
-		</defs>
-	</svg>
-
-	<div id = "portfolioTop"></div>
-
-	<div class = "headerBreak">
-		<h1>Works in Progress</h1>
-	</div>
-
-	<div class = "mainContent">
-		<div class = "textContent">
-			<h2>Laptop Jam</h2>
-			<p>A collaborative music making experience. The idea of this project was to let anybody participate in a kind of “jam session,” being able sit down and make music with friends (or strangers) without the barriers of skill and virtuosity that ordinary instruments present.</p>
-			<span class = "expandedText" id = "425text">
-				<p>Each musician is given a laptop and an interface with two parts. First, they are given a simple “primary” instrument – for example, a bass controlled by pressing keys on a keyboard or a marimba-like instrument controlled through a GUI sequencer. Instruments are designed with some restraints (e.g. some are restricted to certain notes in a scale) so that it’s harder to “make mistakes,” but they still give plenty of room for creative freedom. In theory, this allows the musicians to focus only on making musical decisions. The interfaces themselves are also minimal and instructions are intentionally vague, letting users freely explore and develop their own techniques. </p>
-				<p>At the same time, musicians have the ability to control the parameters of another user’s instrument. For example, moving the mouse to one end of the screen might change the timbre of another instrument or pan it across the stereo field. In addition to the extra attention that this second task demands, it encourages individuals to engage with and respond to the musicians around them, rather than going off independently.</p>
-				<p>As the work progresses, different instruments are automated to phase in and out as musicians experiment with new ideas. The result is a naturally evolving ambient-like piece, (mostly) free of traditional musical structure but still easy (and pleasant) to listen to.</p>
-				<p>The idea started as my final project last fall for <i>MUSI 425 – Special Topics in Music, Multimedia Art, and Technology</i> and utilized Max/MSP, Ableton Live, and Max for Live all networked via OSC. The excerpt showcased here is from my in-class presentation, performed and completely improvised by three of my classmates who have never used (or heard) the work before.*</p>
-				<p>Hopefully, this year I can continue refining it and adding new instruments, interfaces, and features.</p>
-				<p><i>*I apologize for the suboptimal audio – it was recorded from a camera filming the presentation, so some room chatter is audible.</i></p>
-			</span>
-			<a onclick="expandText('425text', '425link')" class = "expandLink" id="425link">Read more...</a>
-		</div>
-		<div class = "imgContent">
-			<iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/750640081&color=%2393746e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-			<img src="./images/laptopjam.png" class="expandedImg" id="425img"/>
-		</div>
-	</div>
-
-	<div class = "mainContent">
-		<div class = "textContent">
-			<h2>Amoriem Labs</h2>
-			<p>I’m currently working as a sound designer and programmer for Amoriem Labs, Yale’s first and only game development club. Our current project, <i>Bulldog Bash</i>, an 8-bit Street Fighter-style fighting game featuring iconic places and people from around the Yale campus. Built with Unity.<p>
-		</div>
-		<div class = "imgContent">
-			<svg id="amoriemSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 338.54 166.67" class="stdImg" fill=url(#svgGrad)><title>amoriemLogo</title><rect fill="#000" opacity="0"/><path d="M68.14,76.38q.51-1.48,1.32-4.71t1.78-7.26q1-4,2-8.41c.71-2.91,1.39-5.61,2-8.12s1.24-4.66,1.78-6.46a14.73,14.73,0,0,1,1.26-3.33,1.21,1.21,0,0,0,.26-.23c.06-.08.18-.11.37-.11h9a.63.63,0,0,1,.63.34,5.73,5.73,0,0,1,.29,1l.55,2.27c.21.9.44,1.88.69,2.93s.48,2,.69,3,.39,1.74.55,2.41.25,1.08.29,1.23q1.14,4.94,2.53,9.79t2.7,9.73c.08.34.22.82.43,1.43s.42,1.23.63,1.87.4,1.22.57,1.78a4.89,4.89,0,0,1,.26,1.18l.06.29c-.08.61-.34.92-.8.92a8.89,8.89,0,0,1-1-.06,8.44,8.44,0,0,0-1-.06c-.84,0-1.66,0-2.47.09s-1.61.09-2.41.09h-.57c-.27,0-.53,0-.77,0a1.15,1.15,0,0,1-.6-.2,4.54,4.54,0,0,1-.4-1.18l-.63-2.35c-.23-.86-.43-1.66-.6-2.41s-.28-1.18-.32-1.29h-.46q-1,0-2.07-.06t-2.07-.06H81.05a10.71,10.71,0,0,0-1.58.12h-.11s-.09.15-.14.46a2,2,0,0,1-.14.52q-.63,2.82-1.38,5.28c0,.57-.27.86-.8.86q-.41,0-.78,0l-.72,0H75c-.61,0-1.22,0-1.81.06s-1.2.06-1.81.06h-.57l-.86,0a4.54,4.54,0,0,1-.86-.14,2.2,2.2,0,0,1-.69-.32.64.64,0,0,1-.29-.55.2.2,0,0,1,0-.11A.56.56,0,0,1,68.14,76.38ZM83.23,53c-.27,1.26-.58,2.52-1,3.76s-.7,2.5-1,3.76l3.21.06c-.27-1.26-.5-2.53-.69-3.79S83.42,54.22,83.23,53Z"/><path d="M132.86,38.21c.27,0,.53,0,.77,0s.51,0,.78,0l1.15,0,1.72.09c.61,0,1.16.09,1.64.14a8.8,8.8,0,0,1,.89.14.71.71,0,0,1,.46.75c0,.92,0,1.86-.11,2.81S140,44,140,45q-.17,3.5-.29,7c-.08,2.3-.11,4.61-.11,6.94v3c0,1,0,2,.11,3,.11,1.57.25,3.12.4,4.65s.23,3.08.23,4.65v1a7.72,7.72,0,0,1-.09,1.18,2.31,2.31,0,0,1-.37,1,.92.92,0,0,1-.8.4c-1.11,0-2.24,0-3.39.14s-2.28.14-3.39.14a6.78,6.78,0,0,1-2.15-.26,1.64,1.64,0,0,1-1-.8,3.47,3.47,0,0,1-.26-1.46V73.17c0-2.3.07-4.56.2-6.8s.24-4.51.32-6.8c-.31.54-.61,1.08-.92,1.64s-.61,1.12-.92,1.69a18.48,18.48,0,0,0-1,2l-1.29,3c-.44,1-.84,2-1.21,2.81a6.58,6.58,0,0,1-.72,1.43.94.94,0,0,1-.69.23.72.72,0,0,1-.75-.46c-1-2.18-2-4.34-2.93-6.49a63,63,0,0,0-3.27-6.31c.11,2.26.24,4.5.37,6.72s.2,4.48.2,6.77c0,.88,0,1.63,0,2.24a3.61,3.61,0,0,1-.23,1.52,1.57,1.57,0,0,1-1,.86,6.82,6.82,0,0,1-2.15.26,28.43,28.43,0,0,1-3.07-.17,28.43,28.43,0,0,0-3.07-.17,2,2,0,0,0-.34,0,2,2,0,0,1-.34,0,1.18,1.18,0,0,1-.75-.23,1.08,1.08,0,0,1-.34-.6,6.22,6.22,0,0,1-.17-1,8.89,8.89,0,0,1-.06-1v-.75A42.07,42.07,0,0,1,105.1,69c.17-1.53.3-3.08.37-4.65.08-1,.12-2,.14-3s0-2,0-3c0-3.25-.08-6.48-.23-9.67s-.31-6.42-.46-9.67a.2.2,0,0,0,0-.11.4.4,0,0,1,0-.17.73.73,0,0,1,.46-.69,5.16,5.16,0,0,1,.89-.14c.48-.06,1-.1,1.64-.14l1.75-.09,1.18,0h.77a5.32,5.32,0,0,1,.78.06h1.15a4.17,4.17,0,0,1,.52,0,1.62,1.62,0,0,1,.46.14,4.76,4.76,0,0,1,1.32,1.64c.5.86,1,1.8,1.49,2.81s1,2,1.38,2.93.73,1.6.92,2c.54,1,1.06,2.07,1.58,3.1s1,2.09,1.58,3.16c1-1.91,1.89-3.85,2.81-5.8.19-.38.5-1,.92-2s.88-1.91,1.38-2.93,1-2,1.52-2.84a4.9,4.9,0,0,1,1.35-1.66,2.3,2.3,0,0,1,1-.17h1.14Z"/><path d="M165.89,37.75A17.79,17.79,0,0,1,172.32,39a18.06,18.06,0,0,1,5.57,3.33,16,16,0,0,1,2.87,3.24,20.07,20.07,0,0,1,2,3.82A24.32,24.32,0,0,1,183,65.88a18.53,18.53,0,0,1-3.76,6.34,17.18,17.18,0,0,1-6,4.19,20,20,0,0,1-8,1.52,18.43,18.43,0,0,1-7.72-1.61A18.91,18.91,0,0,1,151.52,72a19.84,19.84,0,0,1-4-6.43,21.6,21.6,0,0,1-1.41-7.81,20.5,20.5,0,0,1,3.12-10.85,20.67,20.67,0,0,1,3.64-4.33,18.78,18.78,0,0,1,4.76-3.13.74.74,0,0,0,.4-.17l.34-.11a6,6,0,0,1,1.55-.6A19.86,19.86,0,0,1,162,38.1c.73-.12,1.43-.2,2.12-.26A17.41,17.41,0,0,1,165.89,37.75Zm8.38,20.32a15.73,15.73,0,0,0-.52-4,11.37,11.37,0,0,0-1.58-3.56,8.33,8.33,0,0,0-2.73-2.55,7.83,7.83,0,0,0-4-1,8.28,8.28,0,0,0-4,1,9.46,9.46,0,0,0-3,2.5,11,11,0,0,0-1.87,3.53A13.28,13.28,0,0,0,156,58a11.26,11.26,0,0,0,.69,3.82,13,13,0,0,0,1.92,3.53,10.26,10.26,0,0,0,2.93,2.61,7.22,7.22,0,0,0,3.76,1,8.08,8.08,0,0,0,6.8-3.36,10.43,10.43,0,0,0,1.66-3.47A14.35,14.35,0,0,0,174.27,58.07Z"/><path d="M205.41,37c1.26,0,2.44,0,3.53.11a17.23,17.23,0,0,1,3.16.52A12.94,12.94,0,0,1,215,38.81a16.43,16.43,0,0,1,2.84,2,10,10,0,0,1,2.61,3.59,11,11,0,0,1,.83,4.28,11.9,11.9,0,0,1-.63,3.82A13.13,13.13,0,0,1,218.93,56a12.94,12.94,0,0,1-2.67,2.76,10.86,10.86,0,0,1-3.44,1.75l-.4.17a13.6,13.6,0,0,1,2.18,3.16c.57,1.15,1.15,2.28,1.72,3.39.31.61.67,1.32,1.09,2.12s.87,1.61,1.35,2.41A24.91,24.91,0,0,0,220.28,74a11.13,11.13,0,0,0,1.61,1.75c.15.11.32.22.49.32a1.41,1.41,0,0,1,.43.37A.72.72,0,0,1,223,77l.06.17a.73.73,0,0,1-.57.75l-1.32,0c-.84,0-1.8,0-2.87,0H213q-.34,0-.69,0a1.7,1.7,0,0,1-.57-.14,4.75,4.75,0,0,1-1.43-1.66c-.61-1-1.25-2-1.92-3.13s-1.27-2.21-1.81-3.24-.88-1.7-1-2c-.23-.5-.46-1-.69-1.58s-.48-1.1-.75-1.64a6.91,6.91,0,0,0-1-1.44,3.54,3.54,0,0,0-1.41-1c.08,1.19.11,2.36.11,3.53v3.53q0,1.66-.09,3.39t-.09,3.39v.49a.62.62,0,0,1-.29.43,2.34,2.34,0,0,1-.83.2,13,13,0,0,1-1.52.11c-.57,0-1.16,0-1.75,0h-2l-2.93-.06-.63-.11-.29-.17-.17-.23a1.44,1.44,0,0,1-.11-.57v-.57a39.5,39.5,0,0,1,.32-5.11,41.24,41.24,0,0,0,.32-5.11q0-5.79-.4-11.54c-.27-3.83-.4-7.67-.4-11.54v-.95q0-.66,0-1.38t.06-1.35a4.93,4.93,0,0,1,.09-.86l.17-.29.29-.12,1.18-.2A7.17,7.17,0,0,1,194,37c.76,0,1.54,0,2.32.11a22.83,22.83,0,0,0,2.32.12q1.67,0,3.39-.09T205.41,37Zm4.71,11.94a2.78,2.78,0,0,0-.4-1.58,2.68,2.68,0,0,0-1-.92,4.74,4.74,0,0,0-1.41-.43,10.31,10.31,0,0,0-1.58-.11,18,18,0,0,0-1.81.09c-.59.06-1.2.11-1.81.14-.08,1.11-.11,2.2-.11,3.27v3.21h.46l1.41,0,1.41,0a12.55,12.55,0,0,0,1.87-.14,4,4,0,0,0,1.55-.57,3.26,3.26,0,0,0,1.06-1.15A3.9,3.9,0,0,0,210.12,48.94Z"/><path d="M228.79,76.09a21.27,21.27,0,0,1-.17-2.64c0-.61,0-1.22.06-1.84a14.9,14.9,0,0,0,0-1.89,16.07,16.07,0,0,0-.11-1.87,13.54,13.54,0,0,1-.11-1.81,11.56,11.56,0,0,1,.09-1.46,11.8,11.8,0,0,0,.09-1.46c0-1.72-.07-3.42-.2-5.11s-.2-3.39-.2-5.11c0-1.49.06-3,.17-4.45s.17-3,.17-4.45q0-.47,0-1.23c0-.52,0-1.05,0-1.61s0-1.08,0-1.58a3.51,3.51,0,0,1,.2-1.15l.17-.29.52-.23s.13-.06.29-.06c.65,0,1.27,0,1.87.09a18.46,18.46,0,0,0,1.87.09,22.46,22.46,0,0,0,2.44-.14,20.19,20.19,0,0,1,2.44-.14,1,1,0,0,1,.4.11l.34.29a4.38,4.38,0,0,1,.23,1,8.44,8.44,0,0,1,.06,1,17.75,17.75,0,0,1-.17,2.41c-.11.8-.21,1.59-.29,2.35-.08,1.42-.11,2.81-.11,4.19v4.19c0,3.83.09,7.65.26,11.48s.26,7.67.26,11.54c0,.08,0,.12,0,.14a.22.22,0,0,0,0,.14s0,.1,0,.17l-.06.29-.17.23-.29.17a18,18,0,0,1-3.5.46c-1.19,0-2.37.06-3.56.06h-.52a3.8,3.8,0,0,1-1.64-.26C229.19,77.5,229,77,228.79,76.09Z"/><path d="M276.26,43.6a4.28,4.28,0,0,1-.63,2.76c-.42.46-1.38.69-2.87.69-.57,0-1.15,0-1.72-.06l-1.78-.12h-4.14q-.69,0-1.38-.06l-1.81-.14a18,18,0,0,0-1.81-.09H259c-.5,0-.78.1-.86.29a5.45,5.45,0,0,0-.11,1.49c0,.5,0,1,0,1.46s.05,1,.09,1.46a5.17,5.17,0,0,1-.06.86,1.94,1.94,0,0,0,0,.57.44.44,0,0,0,.23.34,1.5,1.5,0,0,0,.72.12,8.57,8.57,0,0,0,1-.06,8.44,8.44,0,0,1,1-.06c.8,0,1.61,0,2.41-.09s1.59-.09,2.35-.09a1.43,1.43,0,0,1,1.15.4,2.38,2.38,0,0,1,.49,1,4.09,4.09,0,0,1,.11,1.23c0,.44,0,.83,0,1.18,0,.8,0,1.52-.06,2.15a4,4,0,0,1-.4,1.61,2.2,2.2,0,0,1-1.06,1,4.85,4.85,0,0,1-2,.34c-.92,0-1.83,0-2.73-.14s-1.81-.14-2.73-.14c0,1.11.08,2.21.11,3.3s.08,2.19.11,3.3c2.41.08,4.82.13,7.23.17s4.82.06,7.23.06a6.86,6.86,0,0,0,1.12-.09,6.5,6.5,0,0,1,1.06-.09c.65,0,1.05.18,1.21.55a3.52,3.52,0,0,1,.23,1.35,25.94,25.94,0,0,1-.14,2.64,23.35,23.35,0,0,0-.14,2.64,2,2,0,0,1-1.18,2.12,7,7,0,0,1-2.61.46,17.73,17.73,0,0,1-2.18-.14,16,16,0,0,0-2.18-.14q-7.17,0-14.52-.17l-1,0c-.54,0-1.11,0-1.72,0s-1.18,0-1.69,0a3.62,3.62,0,0,1-.89-.09.7.7,0,0,1-.52-.46l-.23-.23a.37.37,0,0,0,0-.17.4.4,0,0,1,0-.17c0-2.53,0-5.06-.09-7.61s-.09-5.1-.09-7.66q0-5,.23-9.93T248,41.1c0-.31,0-.78,0-1.43a4.33,4.33,0,0,1,.09-1.32l.17-.29.4-.23a1,1,0,0,1,.46-.11q4.59,0,9.13.06t9.13.17c1.22,0,2.44.12,3.64.23s2.42.17,3.64.17a4.66,4.66,0,0,1,1.72.23c.34.15.52.69.52,1.61a4.89,4.89,0,0,1-.32,1.75A5.64,5.64,0,0,0,276.26,43.6Z"/><path d="M311.2,38.21c.27,0,.53,0,.77,0s.51,0,.78,0l1.15,0,1.72.09c.61,0,1.16.09,1.64.14a8.8,8.8,0,0,1,.89.14.71.71,0,0,1,.46.75c0,.92,0,1.86-.11,2.81s-.13,1.91-.17,2.87q-.16,3.5-.29,7c-.08,2.3-.11,4.61-.11,6.94v3c0,1,0,2,.11,3,.11,1.57.25,3.12.4,4.65s.23,3.08.23,4.65v1a7.72,7.72,0,0,1-.09,1.18,2.31,2.31,0,0,1-.37,1,.92.92,0,0,1-.8.4c-1.11,0-2.24,0-3.39.14s-2.28.14-3.39.14a6.78,6.78,0,0,1-2.15-.26,1.64,1.64,0,0,1-1-.8,3.47,3.47,0,0,1-.26-1.46V73.17c0-2.3.07-4.56.2-6.8s.24-4.51.32-6.8c-.31.54-.61,1.08-.92,1.64s-.61,1.12-.92,1.69a18.48,18.48,0,0,0-1,2l-1.29,3c-.44,1-.84,2-1.21,2.81a6.58,6.58,0,0,1-.72,1.43.94.94,0,0,1-.69.23.72.72,0,0,1-.75-.46c-1-2.18-2-4.34-2.93-6.49a63,63,0,0,0-3.27-6.31c.11,2.26.24,4.5.37,6.72s.2,4.48.2,6.77c0,.88,0,1.63,0,2.24a3.61,3.61,0,0,1-.23,1.52,1.57,1.57,0,0,1-1,.86,6.82,6.82,0,0,1-2.15.26,28.43,28.43,0,0,1-3.07-.17,28.43,28.43,0,0,0-3.07-.17,2,2,0,0,0-.34,0,2,2,0,0,1-.34,0,1.18,1.18,0,0,1-.75-.23,1.08,1.08,0,0,1-.34-.6,6.22,6.22,0,0,1-.17-1,8.89,8.89,0,0,1-.06-1v-.75a42.07,42.07,0,0,1,.26-4.65c.17-1.53.3-3.08.37-4.65.08-1,.12-2,.14-3s0-2,0-3c0-3.25-.08-6.48-.23-9.67s-.31-6.42-.46-9.67a.2.2,0,0,0,0-.11.4.4,0,0,1,0-.17.73.73,0,0,1,.46-.69,5.16,5.16,0,0,1,.89-.14c.48-.06,1-.1,1.64-.14l1.75-.09,1.18,0h.77a5.32,5.32,0,0,1,.78.06h1.15a4.17,4.17,0,0,1,.52,0,1.62,1.62,0,0,1,.46.14,4.76,4.76,0,0,1,1.32,1.64c.5.86,1,1.8,1.49,2.81s1,2,1.38,2.93.73,1.6.92,2c.54,1,1.06,2.07,1.58,3.1s1,2.09,1.58,3.16c1-1.91,1.89-3.85,2.81-5.8.19-.38.5-1,.92-2s.88-1.91,1.38-2.93,1-2,1.52-2.84a4.9,4.9,0,0,1,1.35-1.66,2.3,2.3,0,0,1,1-.17h1.14Z"/><path d="M95.31,129.59c-3.51,0-7,0-10.45.06s-6.94.06-10.45.06a24,24,0,0,1-3.08-.19,22.93,22.93,0,0,0-3-.19,1.09,1.09,0,0,0-.41.09,1.23,1.23,0,0,1-.47.09.93.93,0,0,1-1-.94q-.19-4.45-.19-8.91c0-2.89,0-5.73.13-8.54s.13-5.65.13-8.54c0-.33,0-.93,0-1.79s0-1.84-.06-3,0-2.29,0-3.55V90.81q0-1.61,0-2.82a5.54,5.54,0,0,1,.16-1.54l.19-.25a1.35,1.35,0,0,1,.75-.31c1.26,0,2.51,0,3.77-.06s2.49-.06,3.7-.06a6,6,0,0,1,2.17.28,1.42,1.42,0,0,1,.85.88,4.33,4.33,0,0,1,.13,1.57c0,.65-.06,1.43-.06,2.35,0,3.14,0,6.24-.06,9.32s-.06,6.18-.06,9.32v3.89c0,1.3,0,2.62.13,4l.06,2.2v.13c3.14-.21,6.3-.35,9.48-.44s6.34-.13,9.48-.13a.5.5,0,0,1,.31.09.43.43,0,0,0,.25.09l.31.19.19.25a20.65,20.65,0,0,1,.5,3.48c.08,1.28.13,2.46.13,3.55a7.17,7.17,0,0,1-.13,1.57,1.53,1.53,0,0,1-.44.85,1.46,1.46,0,0,1-.85.34,12.58,12.58,0,0,1-1.35.06h-.78Z"/><path d="M104.41,128c.38-1.09.86-2.8,1.44-5.15s1.23-5,2-7.94,1.45-6,2.23-9.19,1.52-6.14,2.23-8.88,1.36-5.09,1.95-7.06a15.9,15.9,0,0,1,1.38-3.64,1,1,0,0,0,.28-.25.51.51,0,0,1,.41-.13h9.79a.7.7,0,0,1,.69.38,5.63,5.63,0,0,1,.31,1.07c.17.67.37,1.5.6,2.48l.75,3.2c.27,1.15.52,2.24.75,3.26s.43,1.9.6,2.64.27,1.18.31,1.35q1.26,5.4,2.76,10.7t2.95,10.64a14.48,14.48,0,0,0,.47,1.57q.35,1,.69,2t.63,2a5.07,5.07,0,0,1,.28,1.29l.06.31c-.08.67-.38,1-.88,1a10.69,10.69,0,0,1-1.13-.06,10.15,10.15,0,0,0-1.07-.06q-1.38,0-2.7.09t-2.64.09h-.63c-.29,0-.58,0-.85,0a1.21,1.21,0,0,1-.66-.22,5.14,5.14,0,0,1-.44-1.29c-.21-.77-.44-1.63-.69-2.57s-.47-1.82-.66-2.64-.3-1.29-.35-1.41h-.5c-.75,0-1.51,0-2.26-.06s-1.51-.06-2.26-.06h-1.73a11.38,11.38,0,0,0-1.73.13h-.13s-.09.17-.16.5a1.55,1.55,0,0,1-.16.56c-.46,2.05-1,4-1.51,5.77,0,.63-.29.94-.88.94-.29,0-.58,0-.85,0l-.78,0h-.44q-1,0-2,.06t-2,.06h-.63l-.94,0a3.93,3.93,0,0,1-.94-.16,2.36,2.36,0,0,1-.75-.35.69.69,0,0,1-.31-.6.35.35,0,0,1,0-.13A.1.1,0,0,0,104.41,128Zm16.5-25.6c-.29,1.38-.64,2.75-1,4.11s-.76,2.73-1.1,4.11l3.51.06q-.44-2.07-.75-4.14C121.33,105.18,121.12,103.8,120.91,102.42Z"/><path d="M174.32,125.64a11,11,0,0,1-4,3.17,12.46,12.46,0,0,1-5,.91c-1.09,0-2.19-.05-3.3-.16s-2.21-.16-3.29-.16c-1.47,0-2.9,0-4.3.13s-2.83.13-4.3.13c-.84,0-1.65,0-2.45-.06s-1.61-.13-2.45-.25l-.31.06-.63-.19-.19-.31a7.2,7.2,0,0,1-.13-1.22q-.06-1.09-.09-2.7t0-3.48c0-1.26,0-2.45,0-3.58s0-2.12,0-3v-1.73q0-5.14.28-10.29t.28-10.29q0-.57-.06-1.35c0-.52-.08-1.05-.13-1.57s-.07-1-.09-1.47a6.53,6.53,0,0,1,0-1.13v-.38l.13-.25.25-.25.38-.13.38.13c1.8-.17,3.58-.28,5.33-.35s3.54-.09,5.33-.09c1.38,0,2.86,0,4.42.06a40.26,40.26,0,0,1,4.74.41,27.06,27.06,0,0,1,4.58,1.07,13.58,13.58,0,0,1,3.89,2,9.14,9.14,0,0,1,2.7,3.2,10.32,10.32,0,0,1,1,4.77,14.32,14.32,0,0,1-.85,4.93,20,20,0,0,1-2.29,4.49l-.25.38s.06,0,.19.13a10.18,10.18,0,0,1,2.82,4,12.7,12.7,0,0,1,.94,4.83,15,15,0,0,1-.91,5.15A14.59,14.59,0,0,1,174.32,125.64ZM155.93,97.08q0,1,.06,2t.06,2.07a3.36,3.36,0,0,1-.06.63,3.36,3.36,0,0,0-.06.63,11.56,11.56,0,0,0,1.16-.06,11.56,11.56,0,0,1,1.16-.06q.94,0,2.1-.06a6.9,6.9,0,0,0,2.13-.44,4.51,4.51,0,0,0,1.66-1.1,2.83,2.83,0,0,0,.69-2,2.89,2.89,0,0,0-1-2.45,4.3,4.3,0,0,0-2.64-.75q-1.26,0-2.64.09a19.79,19.79,0,0,0-2.64.35v1.18Zm0,15.75q0,1.32,0,2.64t.09,2.64l.06,1.69c.75,0,1.5,0,2.23-.06l2.23-.13,1.66-.13a4.86,4.86,0,0,0,1.51-.34,2.68,2.68,0,0,0,1.1-.88,2.9,2.9,0,0,0,.44-1.73,3.42,3.42,0,0,0-.91-2.54,5.55,5.55,0,0,0-2.23-1.35,11.1,11.1,0,0,0-2.82-.53q-1.5-.09-2.7-.09a.85.85,0,0,0-.57.13A1.15,1.15,0,0,0,155.93,112.83Z"/><path d="M198.29,112.08a16.72,16.72,0,0,1-4.8-.63,11.54,11.54,0,0,1-4.36-2.7,11.55,11.55,0,0,1-3.9-8.91q0-7.16,3.86-10.61t10.83-3.45a16.78,16.78,0,0,1,6.18,1.1,14.11,14.11,0,0,1,5.3,3.92,11,11,0,0,1,1.95,3.42,11.46,11.46,0,0,1,.82,4,4,4,0,0,1-.44,2,1.67,1.67,0,0,1-1.57.75,4.74,4.74,0,0,1-.75-.06,5.17,5.17,0,0,0-.82-.06c-1,0-1.93,0-2.89.09s-1.93.09-2.89.09a.89.89,0,0,1-.56-.25,1.52,1.52,0,0,1-.44-.5,1.36,1.36,0,0,1-.13-.69,4.59,4.59,0,0,0-.06-.82,3.68,3.68,0,0,0-1.29-2.2,3.55,3.55,0,0,0-2.23-.75,4.08,4.08,0,0,0-1.26.25,6.8,6.8,0,0,0-1.44.69,4.45,4.45,0,0,0-1.19,1.1,2.25,2.25,0,0,0-.5,1.41,2.56,2.56,0,0,0,.82,2,5.56,5.56,0,0,0,1.91,1.1,10.13,10.13,0,0,0,2.23.5c.75.08,1.36.17,1.82.25a17.56,17.56,0,0,1,2.89.82,28,28,0,0,1,3.61,1.69,11.64,11.64,0,0,1,2.89,2.29,9.7,9.7,0,0,1,1.91,3.23,13.18,13.18,0,0,1,.69,4.52q0,7.35-4,10.67t-11.14,3.33c-1.09,0-2.13,0-3.14-.13a14.89,14.89,0,0,1-2.92-.53,12.31,12.31,0,0,1-2.76-1.19,11.53,11.53,0,0,1-2.6-2.1,10.79,10.79,0,0,1-2.42-4,14.94,14.94,0,0,1-.78-4.9,1.63,1.63,0,0,1,.38-1.19,2.19,2.19,0,0,1,1-.5,10,10,0,0,1,1.57-.28l1.6-.16c.5,0,.88-.06,1.13-.06l1,0,1.54.06,1.47.06a2.12,2.12,0,0,1,.72.09.75.75,0,0,1,.44.75,5,5,0,0,0,.88,3.3,3.52,3.52,0,0,0,2.82,1,5.29,5.29,0,0,0,1.57-.25,6.36,6.36,0,0,0,1.54-.72,3.7,3.7,0,0,0,1.19-1.26A3.44,3.44,0,0,0,204,116a4,4,0,0,0-.53-2.23,3.29,3.29,0,0,0-1.38-1.16,5.79,5.79,0,0,0-1.85-.47C199.56,112.11,198.91,112.08,198.29,112.08Z"/><circle cx="53.26" cy="65.3" r="8.7"/><circle cx="25.96" cy="65.3" r="8.7"/><path d="M43.77,83.35c-1.49-3.46-2.46-7-4.16-7s-3.45,5.14-4.39,7.12h0q-.15.31-.3.6a5.1,5.1,0,0,0,4.1,7.4l.59,0h.1a5.11,5.11,0,0,0,4.42-7.4C44,83.87,43.89,83.61,43.77,83.35Z"/><path d="M49.9,42.61a5.67,5.67,0,0,0-5.67-5.67c-1.92,0-3.61,1.54-4.63,3-1.05-1.47-2.79-3-4.75-3a5.76,5.76,0,0,0-4.51,2.5c-3.48,4.91,2.74,11.19,6.58,14.38a4.06,4.06,0,0,0,5.28-.07C45.25,51.12,49.9,46.42,49.9,42.61Z"/><path d="M52.21,109.28H43.8v-8.41a3.65,3.65,0,0,0-3.65-3.65H39.08a3.65,3.65,0,0,0-3.65,3.65v8.41H27a3.65,3.65,0,0,0-3.65,3.65V114A3.65,3.65,0,0,0,27,117.65h8.41v8.41a3.65,3.65,0,0,0,3.65,3.65h1.07a3.65,3.65,0,0,0,3.65-3.65v-8.41h8.41A3.65,3.65,0,0,0,55.86,114v-1.07A3.64,3.64,0,0,0,52.21,109.28Z"/></svg>
-		</div>
-	</div>
-
-	<div class = "mainContent">
-		<div class = "textContent">
-			<h2>Websites</h2>
-			<p>I also occasionally like to dabble in website design. Although I don’t (yet) consider myself a front-end guru or a practiced designer, I do value good design and really enjoy the process of imagining and implementing a positive “user experience.”</p>
-			<p>I’ve created a few different pages with plain HTML/CSS/Javascript, including this page (still a work in progress) and a <a href="https://mattudry.com/taiwanblog/" target="_blank">blog</a> from a summer abroad, and created <a href="https://www.lowstrungcellos.org/" target = "_blank">lowstrungcellos.org</a> with the help of Squarespace.</p>
-		</div>
-		<div class = "imgContent">
-			<img src="./images/mattintaiwan.png" class="stdImg" />
-		</div>
-	</div>
-
-	<div class = "headerBreak">
-		<h1>Other Work</h1>
-	</div>
-
-	<div class = "mainContent">
-		<div class = "textContent">
-			<h2>Cross Campus</h2>
-			<p>Last spring, I served as a Producer and Lead Sound Engineer on the Yale Daily News’ first-ever podcast, <i><a href="https://yaledailynews.com/blog/2019/02/10/cross-campus-episode-6-inside-the-yale-admissions-machine/" target="_blank">Cross Campus</i></a>, where my work included planning episodes, recording interviews, and assembling and editing episode content, among other tasks. Because the team and I had little background in podcasting before <i>Cross Campus</i>, figuring out how to put together episodes was both daunting and exciting. In the process, I learned a lot about thoughtful sound design the importance of good pacing in storytelling, skills which I think carry over to many different areas of my work.</p>
-			<p>The project proved so successful that after only a single semester, the YDN received large donations to build a brand-new studio space just for podcast production.</p>
-		</div>
-		<div class = "imgContent">
-			<iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572915847&color=%2308396e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-		</div>
-	</div>
-
-	<br />
-
-	<div class = "mainContent">
-		<div class = "textContent">
-			<p><i>Note: This site is still under development with more projects coming soon! As the year goes on, I'll continue to add more content here from both classwork and personal endeavors.</i></p>
-		</div>
-	</div>
-
-	<div class = "headerBreak">
-		<h1>Contact</h1>
-	</div>
-
-	<div id = "contactSection">
-		<p>matt.udry [at] yale.edu</p>
-		<!-- <p>Phone: 262.705.8577</p> -->
-	</div>
-
-</body>
-
-<script>
-	var typed = new Typed('#homeSmallText', {
-		strings: ["I am a sophomore at Yale University studying computer science and music.", "I'm interested in the creative applications of computing; ^500 in particular, ^250 how new technologies can be used to enrich or expand our experiences with music and sound.", "I hope that my future work — whether it's making new tools to be used for creative purposes ^500 or applying those tools to make something new — ^500 creates both interesting and ^250 (most importantly) ^150 meaningful experiences for all people.", "Thank you for stopping by my page! ^500 Feel free to take a look what I've been working on recently. If you have any questions, you can find my contact info below."],
-		startDelay: 2000,
-		typeSpeed: 15,
-		backDelay: 2500,
-		backSpeed: 10,
-		loop: true
-	});
-</script>
-
+        <figure>
+            <div class="projectContent" id="elem0">
+              <p>Worked as research assistant in the studio of Professor Johannes
+                DeYoung (Carnegie Mellon) during summer 2020. Experimented with
+                neural network-powered music generation and novel synthesis techniques
+                as a part of an interactive media work.</p>
+              <p><i>Samples coming soon — work has not yet premiered.</i></p>
+            </div>
+            <div class="projectContent" id="elem1">
+              <img src="./images/laptopjam.png"></img>
+              <p>A collaborative, improvised music-making experience.
+                Players are given a laptop and an interface with two parts:
+                one that controls their own “primary” instrument, and another
+                that controls the parameters of a different player’s instrument.
+                Controls are designed to remove barriers of virtuosity and don’t
+                require additional hardware, allowing anyone with a laptop to participate.</p>
+              <p>The work was a part of my final project in MUSI 425 – Special Topics in
+                Music, Multimedia Art, and Technology. Controlled by Max/MSP (devices
+                networked via OSC) and sounds synthesized in Ableton.
+                The excerpt showcased here is from my in-class presentation,
+                performed and completely improvised by three of my classmates
+                who have never used (or heard) the work before.*</p>
+                <iframe class='scaudio' scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/750640081&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+              <p><i>*Apologies for the suboptimal audio – recorded from a camera in the room.</i></p>
+            </div>
+            <div class="projectContent" id="elem2">
+              <iframe class='scaudio' scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/826842907&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+              <p>Created an instrument to be used for live coding performances,
+                inspired by some of Steve Reich’s works. The instrument is part-generative,
+                sometimes developing interesting patterns on its own, but is still responsive
+                and highly reliant on live user input.</p>
+              <p>Above is a recording of a short improvised performance with it for a final project
+                presentation in CPSC 432 — Computer Music: Sound Representation and Synthesis.
+                All synthesis/live pattern generation done in vanilla SuperCollider.</p>
+            </div>
+            <div class="projectContent" id="elem3">
+              <img src="./images/amoriemLogo.svg"></img>
+              <p>Currently working as a sound designer and programmer for Amoriem Labs,
+                Yale’s first-ever game development club.</p>
+              <p><i>Samples coming soon — game has not yet been released.</i></p>
+            </div>
+            <div class="projectContent" id="elem4">
+              <iframe class='scaudio' scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572915847&color=%2308396e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+              <p>Served as Producer and Lead Sound Engineer on Yale Daily News’
+                first ever podcast, Cross Campus. My work included planning episodes,
+                recording interviews, and assembling and editing episode content, among other tasks.</p>
+              <p>The project proved so successful that after only a single semester, the YDN received
+                large donations to build a brand-new studio space exclusively for podcast production.</p>
+            </div>
+            <div class="projectContent" id="elem5">
+              <img src="./images/mattintaiwan.png"></img>
+              <p>Designed and maintained a <a href='https://mattudry.com/taiwanblog/' target="_blank">blog</a>
+                documenting my summer abroad studying at the International Chinese Language
+                Program in Taipei, Taiwan. Generously funded by the Richard U. Light Fellowship.</p>
+            </div>
+        </figure>
+        <section id='mobileContact'>matt.udry [at] yale.edu</section>
+      </div>
+    </div>
+  </body>
 </html>
