@@ -3,28 +3,14 @@
   box-sizing: border-box;
 }
 
+
 body {
   display: inline;
   font-family: quasimoda, sans-serif;
   background-color: #f2f4f3;
-  /* background: linear-gradient(-45deg, #f2f4f3 , #dbd5d1, #e4e4e4, #faf8f5); */
-  background-size: 400% 400%;
-  /* animation: gradient 30s ease infinite; */
-  
+  background-size: 400% 400%;  
   color: black;
 }
-
-/* @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-} */
 
  nav {
   white-space: nowrap;
@@ -142,14 +128,20 @@ figure {
   display: flex;
   flex-direction: column;
   height: 95%;
+  overflow-y: auto;
 }
 
 
-figure p {
-  margin: 2em;
+.projectContent p {
+  margin: 2.5% 5%;
   font-weight: 300;
 }
 
+.projectContent h2 {
+  font-size: 24px;
+  margin: 5% 5% 2.5%;
+  font-weight: 500;
+}
 
 .projectContent img {
   width: 67%;
@@ -160,7 +152,7 @@ figure p {
 .projectContent {
   margin: auto;
   display: none;
-  overflow: scroll;
+
   font-size: 18px;
   font-weight: 300;
 }
@@ -169,7 +161,6 @@ figure p {
   width: 80%;
   margin-left: 10%;
 }
-
 
 
 /* responsive stuff */
@@ -182,7 +173,6 @@ figure p {
   font-weight: 300;
   color: #555;
 }
-
 
 
 @media only screen and (max-width: 460px) {
